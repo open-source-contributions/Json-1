@@ -3,6 +3,7 @@ declare(strict_types = 1);
 
 namespace Tests\Innmind\Json;
 
+use Error;
 use Innmind\Json\{
     Json,
     Exception\SyntaxError,
@@ -67,7 +68,7 @@ JSON;
 
     public function testThrowOnMaximumDepthExceeded()
     {
-        $this->expectException(MaximumDepthExceeded::class);
+        $this->expectException(Error::class);
         $depth = 0;
 
         $array = ($deepen = function(array $array) use (&$deepen, &$depth): array {
